@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.CheckupRefMapper">
+
+	<resultMap type="CheckupRef" id="CheckupRefResult">
+		<id property="id" column="Id" />
+		<result property="checkupId" column="CheckupId" />
+		<result property="checkupRefId" column="CheckupRefId" />
+	</resultMap>
+
+	<insert id="insert" parameterType="CheckupRef" useGeneratedKeys="true"
+		keyProperty="id">
+
+		INSERT INTO checkup_checkup_ref
+		(Id,CheckupId,CheckupRefId)
+		VALUES
+		(#{id},#{checkupId},#{checkupRefId})
+	</insert>
+
+	<delete id="deleteByCheckup">
+		delete from checkup_checkup_ref where
+		checkupId=#{checkupId}
+	</delete>
+
+</mapper>

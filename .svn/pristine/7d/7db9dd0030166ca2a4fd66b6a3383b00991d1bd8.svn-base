@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.BodyHotSymptomRefMapper">
+
+	<resultMap type="BodyHotSymptomRef" id="BodyHotSymptomRefResult">
+		<id property="id" column="Id" />
+		<result property="bodyId" column="BodyId" />
+		<result property="hotSymptomId" column="HotSymptomId" />
+	</resultMap>
+
+	<insert id="insert" parameterType="BodyHotSymptomRef"
+		useGeneratedKeys="true" keyProperty="id">
+
+		INSERT INTO body_hotsymptom_ref
+		(Id,BodyId,HotSymptomId)
+		VALUES
+		(#{id},#{bodyId},#{hotSymptomId})
+	</insert>
+
+	<delete id="deleteByBody">
+		delete from body_hotsymptom_ref where
+		bodyId=#{bodyId}
+	</delete>
+
+</mapper>

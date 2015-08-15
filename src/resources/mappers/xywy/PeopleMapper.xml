@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.PeopleMapper">
+
+	<resultMap type="People" id="PeopleResult">
+		<id property="id" column="Id" />
+		<result property="name" column="Name" />
+		<result property="hotIllnessRef" column="HotIllnessRef" />
+		<result property="allIllnessRef" column="AllIllnessRef" />
+	</resultMap>
+
+	<select id="selectByName" resultMap="PeopleResult">
+		select * from people where
+		name=#{name}
+	</select>
+
+	<insert id="insert" parameterType="People" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO people (Name,HotIllnessRef)
+		values
+		(#{name},#{hotIllnessRef})
+	</insert>
+
+	<update id="update" parameterType="People">
+		UPDATE people SET
+		HotIllnessRef=#{hotIllnessRef} where
+		Id=#{id}
+	</update>
+
+</mapper>

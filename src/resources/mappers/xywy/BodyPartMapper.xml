@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.BodyPartMapper">
+
+	<resultMap type="BodyPart" id="BodyPartResult">
+		<id property="id" column="Id" />
+		<result property="name" column="Name" />
+		<result property="hotIllnessRef" column="HotIllnessRef" />
+		<result property="illnessRef" column="IllnessRef" />
+		<result property="hotSymptomRef" column="HotSymptomRef" />
+		<result property="symptomRef" column="SymptomRef" />
+	</resultMap>
+	
+	<select id="selectAll" resultMap="BodyPartResult">
+		select * from body
+	</select>
+
+	<select id="selectByName" resultMap="BodyPartResult">
+		select * from body where
+		Name=#{name}
+	</select>
+
+	<insert id="insert" parameterType="BodyPart" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO body
+		(Name,HotIllnessRef,IllnessRef,HotSymptomRef,SymptomRef) VALUES
+		(#{name},#{hotIllnessRef},#{illnessRef},#{hotSymptomRef},#{symptomRef})
+	</insert>
+
+	<update id="update" parameterType="People">
+		UPDATE body
+		SET
+		HotIllnessRef=#{hotIllnessRef}
+		,IllnessRef=#{illnessRef}
+		,HotSymptomRef=#{hotSymptomRef}
+		,SymptomRef=#{symptomRef}
+		where Id=#{id}
+	</update>
+
+</mapper>

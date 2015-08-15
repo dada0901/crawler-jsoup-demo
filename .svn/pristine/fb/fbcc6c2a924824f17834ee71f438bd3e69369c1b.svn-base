@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.MedicationMapper">
+
+	<resultMap type="Medication" id="MedicationResult">
+		<id property="id" column="Id" />
+		<result property="name" column="Name" />
+		<result property="alias" column="Alias" />
+		<result property="spell" column="Spell" />
+		<result property="cffcf" column="Cffcf" />
+		<result property="zyxy" column="Zyxy" />
+		<result property="ckjg" column="Ckjg" />
+		<result property="sccj" column="Sccj" />
+		<result property="gnzz" column="Gnzz" />
+		<result property="zycf" column="Zycf" />
+		<result property="bzgg" column="Bzgg" />
+		<result property="yfyl" column="Yfyl" />
+		<result property="pzwh" column="Pzwh" />
+		<result property="photo" column="Photo" />
+		<result property="zzjb" column="Zzjb" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="MedicationResult">
+		select * from Medication
+	</select>
+	
+	<select id="selectAllZzjb" resultMap="MedicationResult">
+		select Id,Name,Zzjb from Medication
+	</select>
+
+	<select id="selectByName" resultMap="MedicationResult">
+		select * from Medication
+		where
+		name=#{name}
+	</select>
+
+	<select id="selectByNameAndSccj" resultMap="MedicationResult">
+		select * from
+		Medication where
+		name=#{name}
+		and sccj=#{sccj}
+		and
+		pzwh=#{pzwh}
+	</select>
+	
+	<select id="selectAllNameAndManufacturerAndBatchNumber" resultMap="MedicationResult">
+		select MeidcationId,MedicationName,Manufacturer,BatchNumber from Medication
+	</select>
+
+	<insert id="insert" parameterType="Medication" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into
+		medication
+		(Id, Name, Alias,
+		Spell, Cffcf, Zyxy,
+		Ckjg, Sccj, Gnzz,
+		Zycf, Bzgg, Yfyl,
+		Pzwh, Photo, Zzjb
+		)
+		values
+		(#{id},
+		#{name},
+		#{alias},
+		#{spell},
+		#{cffcf},
+		#{zyxy},
+		#{ckjg},
+		#{sccj},
+		#{gnzz},
+		#{zycf},
+		#{bzgg},
+		#{yfyl},
+		#{pzwh},
+		#{photo},
+		#{zzjb}
+		)
+	</insert>
+
+	<update id="update" parameterType="Medication">
+		update medication
+		set
+		Name =
+		#{name},
+		Alias = #{alias},
+		Spell = #{spell},
+		Cffcf = #{cffcf},
+		Zyxy =
+		#{zyxy},
+		Ckjg = #{ckjg},
+		Sccj = #{sccj},
+		Gnzz = #{gnzz},
+		Zycf = #{zycf},
+		Bzgg = #{bzgg},
+		Yfyl = #{yfyl},
+		Pzwh = #{pzwh},
+		Photo = #{photo},
+		Zzjb =
+		#{zzjb}
+		where Id=#{id}
+	</update>
+
+</mapper>

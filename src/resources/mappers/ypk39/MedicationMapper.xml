@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.ypk39.mapper.MedicationMapper">
+
+	<resultMap type="Medication" id="MedicationResult">
+		<id column="Id" property="id" jdbcType="INTEGER" />
+		<result column="Category" property="category" jdbcType="VARCHAR" />
+		<result column="Origin" property="origin" jdbcType="VARCHAR" />
+		<result column="Name" property="name" jdbcType="VARCHAR" />
+		<result column="FullName" property="fullName" jdbcType="VARCHAR" />
+		<result column="Prescription" property="prescription" jdbcType="VARCHAR" />
+		<result column="ValidTime" property="validTime" jdbcType="VARCHAR" />
+		<result column="ApproveNumber" property="approveNumber"
+			jdbcType="VARCHAR" />
+		<result column="Formulation" property="formulation" jdbcType="VARCHAR" />
+		<result column="Barcode" property="barcode" jdbcType="VARCHAR" />
+		<result column="Composition" property="composition" jdbcType="LONGVARCHAR" />
+		<result column="Syz" property="syz" jdbcType="LONGVARCHAR" />
+		<result column="Yfyl" property="yfyl" jdbcType="LONGVARCHAR" />
+		<result column="Blfy" property="blfy" jdbcType="LONGVARCHAR" />
+		<result column="Ban" property="ban" jdbcType="LONGVARCHAR" />
+		<result column="Zysx" property="zysx" jdbcType="LONGVARCHAR" />
+		<result column="Ywhxzy" property="ywhxzy" jdbcType="LONGVARCHAR" />
+		<result column="Ylzy" property="ylzy" jdbcType="LONGVARCHAR" />
+		<result column="Storage" property="storage" jdbcType="LONGVARCHAR" />
+		<result column="Manufacturer" property="manufacturer" jdbcType="LONGVARCHAR" />
+		<result column="Specification" property="specification"
+			jdbcType="LONGVARCHAR" />
+		<result column="Photo" property="photo" jdbcType="LONGVARBINARY" />
+	</resultMap>
+
+	<select id="selectByNameAndSccj" resultMap="MedicationResult">
+		select * from
+		Medication where
+		name=#{name}
+		and sccj=#{sccj}
+		and
+		pzwh=#{pzwh}
+	</select>
+
+	<insert id="insert" parameterType="Medication" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into medication
+		(Id, Category, Origin,
+		Name,
+		FullName, Prescription,
+		ValidTime,
+		ApproveNumber, Formulation,
+		Barcode,
+		Composition, Syz,
+		Yfyl, Blfy, Ban,
+		Zysx, Ywhxzy, Ylzy,
+		Storage,
+		Manufacturer, Specification,
+		Photo)
+		values
+		(#{id,jdbcType=INTEGER},
+		#{category,jdbcType=VARCHAR},
+		#{origin,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{fullName,jdbcType=VARCHAR},
+		#{prescription,jdbcType=VARCHAR},
+		#{validTime,jdbcType=VARCHAR},
+		#{approveNumber,jdbcType=VARCHAR},
+		#{formulation,jdbcType=VARCHAR},
+		#{barcode,jdbcType=VARCHAR},
+		#{composition,jdbcType=LONGVARCHAR},
+		#{syz,jdbcType=LONGVARCHAR},
+		#{yfyl,jdbcType=LONGVARCHAR},
+		#{blfy,jdbcType=LONGVARCHAR},
+		#{ban,jdbcType=LONGVARCHAR},
+		#{zysx,jdbcType=LONGVARCHAR},
+		#{ywhxzy,jdbcType=LONGVARCHAR},
+		#{ylzy,jdbcType=LONGVARCHAR},
+		#{storage,jdbcType=LONGVARCHAR},
+		#{manufacturer,jdbcType=LONGVARCHAR},
+		#{specification,jdbcType=LONGVARCHAR},
+		#{photo,jdbcType=LONGVARBINARY})
+	</insert>
+
+	<update id="update" parameterType="Medication">
+		update medication
+		set Category
+		= #{category,jdbcType=VARCHAR},
+		Origin = #{origin,jdbcType=VARCHAR},
+		Name = #{name,jdbcType=VARCHAR},
+		FullName =
+		#{fullName,jdbcType=VARCHAR},
+		Prescription =
+		#{prescription,jdbcType=VARCHAR},
+		ValidTime =
+		#{validTime,jdbcType=VARCHAR},
+		ApproveNumber =
+		#{approveNumber,jdbcType=VARCHAR},
+		Formulation =
+		#{formulation,jdbcType=VARCHAR},
+		Barcode = #{barcode,jdbcType=VARCHAR},
+		Composition = #{composition,jdbcType=LONGVARCHAR},
+		Syz =
+		#{syz,jdbcType=LONGVARCHAR},
+		Yfyl = #{yfyl,jdbcType=LONGVARCHAR},
+		Blfy =
+		#{blfy,jdbcType=LONGVARCHAR},
+		Ban = #{ban,jdbcType=LONGVARCHAR},
+		Zysx =
+		#{zysx,jdbcType=LONGVARCHAR},
+		Ywhxzy = #{ywhxzy,jdbcType=LONGVARCHAR},
+		Ylzy = #{ylzy,jdbcType=LONGVARCHAR},
+		Storage =
+		#{storage,jdbcType=LONGVARCHAR},
+		Manufacturer =
+		#{manufacturer,jdbcType=LONGVARCHAR},
+		Specification =
+		#{specification,jdbcType=LONGVARCHAR},
+		Photo =
+		#{photo,jdbcType=LONGVARBINARY}
+		where Id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

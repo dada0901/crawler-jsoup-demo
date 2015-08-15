@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.IllnessMapper">
+
+	<resultMap type="Illness" id="IllnessResult">
+		<id property="id" column="Id" />
+		<result property="illCategoryId" column="IllCategoryId" />
+		<result property="name" column="Name" />
+		<result property="spell" column="Spell" />
+		<result property="alias" column="Alias" />
+		<result property="remark" column="Remark" />
+		<result property="photo" column="Photo" />
+		<result property="reason" column="Reason" />
+		<result property="zzgs" column="Zzgs" />
+		<result property="food" column="Food" />
+		<result property="zlfa" column="Zlfa" />
+		<result property="checkupRemark" column="CheckupRemark" />
+		<result property="precaution" column="Precaution" />
+		<result property="zdjb" column="Zdjb" />
+		<result property="bfz" column="Bfz" />
+		<result property="checkupRef" column="CheckupRef" />
+		<result property="people" column="people" />
+		<result property="hbbl" column="hbbl" />
+		<result property="crfs" column="crfs" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="IllnessResult">
+		select * from illness
+	</select>
+
+	<select id="selectByName" resultMap="IllnessResult">
+		select * from illness where
+		name=#{name}
+	</select>
+
+	<insert id="insert" parameterType="Illness" useGeneratedKeys="true"
+		keyProperty="id">
+
+		insert into
+		Illness
+		(Id,IllCategoryId,Name,Spell,Alias,Remark,Photo,Reason,Zzgs,Food,Precaution,Zlfa,CheckupRemark,Zdjb,Bfz,CheckupRef,people,hbbl)
+		values
+		(#{id},#{illCategoryId},#{name},#{spell},#{alias},#{remark},#{photo},#{reason},#{zzgs},#{food},#{precaution},#{zlfa},#{checkupRemark},#{zdjb},#{bfz},#{checkupRef},#{people},#{hbbl})
+	</insert>
+
+	<update id="update" parameterType="Illness">
+		UPDATE illness SET
+		IllCategoryId=#{illCategoryId},
+		Name=#{name},
+		Spell=#{spell},
+		Alias=#{alias},
+		Remark=#{remark},
+		Photo=#{photo},
+		Reason=#{reason},
+		Zzgs=#{zzgs},
+		Food=#{food},
+		Precaution=#{precaution},
+		Zlfa=#{zlfa},
+		CheckupRemark=#{checkupRemark},
+		Zdjb=#{zdjb},
+		Bfz=#{bfz},
+		CheckupRef=#{checkupRef},
+		people=#{people},
+		hbbl=#{hbbl}
+		where Id=#{id}
+	</update>
+
+	<update id="updatePeopleAndBbbl" parameterType="Illness">
+		UPDATE illness
+		SET
+		people=#{people},
+		hbbl=#{hbbl},
+		crfs=#{crfs}
+		where id=#{id}
+	</update>
+
+</mapper>

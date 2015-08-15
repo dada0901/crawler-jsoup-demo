@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.SymptomMapper">
+
+	<resultMap type="Symptom" id="SymptomResult">
+		<id property="id" column="Id" />
+		<result property="name" column="Name" />
+		<result property="spell" column="Spell" />
+		<result property="alias" column="Alias" />
+		<result property="remark" column="Remark" />
+		<result property="reason" column="Reason" />
+		<result property="checkupRemark" column="CheckupRemark" />
+		<result property="jbzd" column="Jbzd" />
+		<result property="hjff" column="Hjff" />
+		<result property="bodyRef" column="BodyRef" />
+		<result property="specialtyRef" column="SpecialtyRef" />
+		<result property="illnessRef" column="IllnessRef" />
+		<result property="checkupRef" column="CheckupRef" />
+		<result property="symptomRef" column="SymptomRef" />
+		<result property="photo" column="Photo" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="SymptomResult">
+		select * from symptom
+	</select>
+
+	<select id="selectByName" resultMap="SymptomResult">
+		select * from symptom where
+		name=#{name}
+	</select>
+
+	<insert id="insert" parameterType="Symptom" useGeneratedKeys="true"
+		keyProperty="id">
+
+		insert into
+		symptom
+		(Name,Spell,Remark,Reason,CheckupRemark,Jbzd,Hjff,BodyRef,SpecialtyRef,IllnessRef,CheckupRef,SymptomRef,Photo)
+		values
+		(#{name},#{spell},#{remark},#{reason},#{checkupRemark},#{jbzd},#{hjff},#{bodyRef},#{specialtyRef},#{illnessRef},#{checkupRef},#{symptomRef},#{photo})
+	</insert>
+
+	<update id="update" parameterType="Symptom">
+		UPDATE symptom SET
+		Name=#{name},
+		Spell=#{spell},
+		Remark=#{remark},
+		Reason=#{reason},
+		CheckupRemark=#{checkupRemark},
+		Jbzd=#{jbzd},
+		Hjff=#{hjff},
+		BodyRef=#{bodyRef},
+		SpecialtyRef=#{specialtyRef},
+		IllnessRef=#{illnessRef},
+		CheckupRef=#{checkupRef},
+		SymptomRef=#{symptomRef},
+		Photo=#{photo}
+		where Id=#{id}
+	</update>
+
+</mapper>

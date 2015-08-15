@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.SymptomIllnessRefMapper">
+
+	<resultMap type="SymptomIllnessRef" id="SymptomIllnessRefResult">
+		<id property="id" column="Id" />
+		<result property="symptomId" column="SymptomId" />
+		<result property="illnessId" column="IllnessId" />
+	</resultMap>
+
+	<insert id="insert" parameterType="SymptomIllnessRef"
+		useGeneratedKeys="true" keyProperty="id">
+		
+		INSERT INTO symptom_illness_ref
+		(Id,SymptomId,IllnessId)
+		VALUES
+		(#{id},#{symptomId},#{illnessId})
+	</insert>
+
+	<delete id="deleteBySymptom">
+	delete from symptom_illness_ref where
+	SymptomId=#{symptomId}
+	</delete>
+
+</mapper>

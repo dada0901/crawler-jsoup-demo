@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.SpecialtyHotIllnessRefMapper">
+
+	<resultMap type="SpecialtyHotIllnessRef" id="SpecialtyHotIllnessRefMapperResult">
+		<id property="id" column="Id" />
+		<result property="specialtyId" column="SpecialtyId" />
+		<result property="hotIllnessId" column="HotIllnessId" />
+	</resultMap>
+
+	<insert id="insert" parameterType="SpecialtyHotIllnessRef"
+		useGeneratedKeys="true" keyProperty="id">
+
+		INSERT INTO
+		specialty_hotillness_ref
+		(Id,SpecialtyId,HotIllnessId)
+		VALUES
+		(#{id},#{specialtyId},#{hotIllnessId})
+	</insert>
+
+	<delete id="deleteBySpecialty">
+		delete from specialty_hotillness_ref where
+		SpecialtyId=#{specialtyId}
+	</delete>
+
+</mapper>

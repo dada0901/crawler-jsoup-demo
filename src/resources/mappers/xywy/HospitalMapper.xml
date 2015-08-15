@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.HospitalMapper">
+
+	<resultMap type="Hospital" id="HospitalResult">
+		<id property="id" column="Id" />
+		<result property="name" column="Name" />
+		<result property="areaInfo" column="AreaInfo" />
+		<result property="remark" column="Remark" />
+		<result property="address" column="Address" />
+		<result property="addressWay" column="AddressWay" />
+		<result property="telephone" column="Telephone" />
+		<result property="officeInfo" column="OfficeInfo" />
+	</resultMap>
+
+	<select id="selectByName" resultMap="HospitalResult">
+		select * from hospital where
+		name=#{name}
+	</select>
+
+	<insert id="insert" parameterType="Hospital" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO hospital
+		(NAME,AreaInfo,Remark,Address,AddressWay,Telephone,OfficeInfo)
+		values
+		(#{name},#{areaInfo},#{remark},#{address},#{addressWay},#{telephone},#{officeInfo})
+	</insert>
+
+	<update id="update" parameterType="Hospital">
+		UPDATE hospital
+		SET
+		AreaInfo=#{areaInfo},
+		Remark=#{remark},
+		Address=#{address},
+		AddressWay=#{addressWay},
+		OfficeInfo=#{officeInfo}
+		where Id=#{id}
+	</update>
+
+</mapper>

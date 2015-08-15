@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cinyi.crawlers.xywy.mapper.IllnessCheckupRefMapper">
+
+	<resultMap type="IllnessCheckupRef" id="IllnessCheckupRefResult">
+		<id property="id" column="Id" />
+		<result property="illnessId" column="IllnessId" />
+		<result property="checkupId" column="CheckupId" />
+	</resultMap>
+
+	<insert id="insert" parameterType="IllnessCheckupRef" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO illness_checkup_ref (Id,IllnessId,CheckupId)
+		VALUES
+		(#{id},#{illnessId},#{checkupId})
+	</insert>
+
+	<delete id="deleteByIllness">
+		delete from illness_checkup_ref where
+		IllnessId=#{illnessId}
+	</delete>
+
+</mapper>
